@@ -1,31 +1,5 @@
 ## 2. Core Gameplay
 
-### 1.0 and 1.4 Installation and Basic Setup
-
-- `Player` Prefab
-    - Sprite con un círculo
-    - Componente NetworkObject
-    - Componente NetworkTransform
-        - Sin sincronizar escala
-        - Authority Mode: Server
-        - Interpolate: true
-- SampleScene
-    - NetworkManager
-    - Canvas con botón para hacer Join
-- Script JoinServer para iniciar un cliente
-
-### 2.1 Importing Assets
-
-- Importación de los assets `TankAssets` disponible en la raíz del repositorio.
-- Creación del aspecto visual del tanque en el prefab `Player`
-    - Es importante observar como hay distintos componentes NetworkTransform en las distintas partes del tanque.
-
-### 2.3 Reading Input
-
-- Se crea un asset InputReader para definir las entradas de usuario en el juego
-    - Se aplica su utilización en todo el proyecto.
-- Se crea un script TestScript para capturar los eventos de movimiento de InputReader
-
 ### 2.4 Network Authority
 
 Se añade botón de conexión como Host
@@ -136,10 +110,17 @@ Este script se suscribe al evento HandleHealthChanged para modificar de forma vi
 
 - Se crea el mapa de juego
 
-### 2.17 Combat Polish    
+###     
 
 - Nuevo Prefab DustCloud para mostrar explosión de la bala al chocar
 - Nuevo script SpawnOnDestroy para hacer aparecer un objeto cuando otro es destruído
 - Modificado ProjectileLauncher:
     - Se cambia la forma de medir el tiempo entre disparos.
     - Se añade un coste para disparar, es necesario tener monedas recolectadas para hacerlo.
+
+## 3. Connecting Online
+
+### 3.2 Main Menu
+
+- Se crea una escena nueva para el Menú principal
+- Se renombra la escena SampleScene a Game

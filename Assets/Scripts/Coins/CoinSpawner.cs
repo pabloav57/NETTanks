@@ -49,20 +49,18 @@ public class CoinSpawner : NetworkBehaviour
 
     private Vector2 GetSpawnPoint()
     {
-    float x = 0;
-    float y = 0;
-    while (true)
-    {
-        x = Random.Range(xSpawnRange.x, xSpawnRange.y);
-        y = Random.Range(ySpawnRange.x, ySpawnRange.y);
-        Vector2 spawnPoint = new Vector2(x, y);
-
-        // Usar OverlapCircle y comprobar si el collider es null
-        Collider2D collider = Physics2D.OverlapCircle(spawnPoint, coinRadius, layerMask);
-        if (collider == null)
+        float x = 0;
+        float y = 0;
+        while (true)
         {
-            return spawnPoint;
+            x = Random.Range(xSpawnRange.x, xSpawnRange.y);
+            y = Random.Range(ySpawnRange.x, ySpawnRange.y);
+            Vector2 spawnPoint = new Vector2(x, y);
+            int numColliders = Physics2D.OverlapCircleNonAlloc(spawnPoint, coinRadius, coinBuffer, layerMask);
+            if (numColliders == 0)
+            {
+                return spawnPoint;
+            }
         }
-    }
     }
 }
